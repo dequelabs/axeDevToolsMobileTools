@@ -37,7 +37,7 @@ The constructor to the class takes the following arguments
 .client_id - default value provided in mobileservers.master.yaml
 .client_secret_key - client secret provided to you
 
-** get_mobile_scan** - retrieve scan details from server
+**get_mobile_scan** - retrieve scan details from server
 
 *parameters:*
 -userid - keycloak user id for the user who owns the scan
@@ -49,7 +49,7 @@ python dict with the details of the scan, including all passed and failed
 rules, the platform the scan was run against, the list of applied tags.
 
 
-** set_mobile_scan_tag** - set one or more tags for the scan identified with the input parameters
+**set_mobile_scan_tag** - set one or more tags for the scan identified with the input parameters
 
 *parameters:*
 -userid - keycloak user id for the user who owns the scan
