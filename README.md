@@ -12,8 +12,7 @@ It provides routines to perform the following operaitons:
 Authentication information is stored in the file mobileservers.yaml and a prototype
 file is provided in mobileservers.master.yaml, included in this package.
 
-The current version requires username, password and a client secret to authentication.
-Future versions of the server will remove the client secret requirement.
+The current version requires username, password for authentication.
 
 
 # First time setup
