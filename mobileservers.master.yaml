@@ -1,11 +1,6 @@
 {
     "Servers": [
         {
-            "Name": "mobilesso",
-            "URL": "https://mobile-sso.dequelabs.com/",
-            "realm": "deque"
-        },
-        {
             "Name": "centralsso",
             "URL": "https://auth.deque.com/",
             "realm": "axe"
@@ -13,9 +8,8 @@
         {
             "Name": "sauronprod",
             "URL": "https://sauron.dequecloud.com/",
-            "realm": "deque",
-            "clientid": "deque-mobile-attest",
-            "clientsecret": <client secret sent to you>,
+            "realm": "axe",
+            "clientid": "mobile",
             "user": <your user name>,
             "password": <your password>
         }
