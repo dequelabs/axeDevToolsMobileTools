@@ -7,7 +7,7 @@ This project provies a python wrapper to the axe DevTools Mobile server REST API
 It provides routines to perform the following operaitons:
 1. Authenticate with the server
 1. Retrieve scan data from the result key
-1. Set tags for a scan base don teh result key
+1. Set tags for a scan based on the result key
 
 Authentication information is stored in the file mobileservers.yaml and a prototype
 file is provided in mobileservers.master.yaml, included in this package.
