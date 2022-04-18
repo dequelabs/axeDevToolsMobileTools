@@ -20,7 +20,7 @@ Future versions of the server will remove the client secret requirement.
 
 1. clone this repository (dequelabs/MobileTools)
 1. Copy mobileservers.master.yaml to mobileservers.yaml
-1. Edit mobileservers.yaml with text editor. You must fill out the "sauronprod" section. The 'user' and 'password' fields are for the user that will perform the operation. The 'clientsecret' entry will be provided to you seperately.
+1. Edit mobileservers.yaml with text editor. You must fill out the "sauronprod" section. The 'user' and 'password' fields are for the user that will perform the operation. 
 1. Install python 3.7 or above
 1. Run: 'pip install -r requirements.txt' from a command/terminal window
 
@@ -35,7 +35,6 @@ The constructor to the class takes the following arguments
 .password - your password for the server
 .realm_name - default value provided in mobileservers.master.yaml
 .client_id - default value provided in mobileservers.master.yaml
-.client_secret_key - client secret provided to you
 
 **get_mobile_scan** - retrieve scan details from server
 
