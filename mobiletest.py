@@ -31,11 +31,7 @@ from mobile.mobile_exceptions import MobileAuthenticationError
 from mobile.mobile_exceptions import MobileGetError
 
 DEFAULT_MOBILE_SERVER = "https://sauron.dequecloud.com/"
-DEFAULT_KEYCLOAK_SERVER = "https://mobile-sso.dequelabs.com"
-
-MOBILE_DEVTOOLS_CLIENT_ID = "mobile-private"
-MOBILE_CLIENT_ID = "devtools-mobile"
-MOBILE_REALM = "deque"
+DEFAULT_KEYCLOAK_SERVER = "https://auth.deque.com"
 
 
 # perform login to Mobile as admin and return keycloak admin object
@@ -50,27 +46,15 @@ def connect_mobile_as_admin(server, Mobileserver):
 
     # Connect to Mobile admin interface
     try:
-        if 'clientsecret' in server:
-            Mobile_admin = MobileAdmin(
-                                   auth_server_url=server['URL'] + "/auth/",
-                                   server_url=Mobile_url,
-                                   username=Mobileserver['user'],
-                                   password=Mobileserver['password'],
-                                   realm_name=Mobileserver['realm'],
-                                   client_id=Mobileserver['clientid'],
-                                   client_secret_key=Mobileserver['clientsecret'],
-                                   verify=True,
-                                   auto_refresh_token = [ 'get', 'post', 'put', 'delete' ] )
-        else:
-            Mobile_admin = MobileAdmin(
-                                   auth_server_url=server['URL'] + "/auth/",
-                                   server_url=Mobile_url,
-                                   username=Mobileserver['user'],
-                                   password=server['password'],
-                                   realm_name=Mobileserver['realm'],
-                                   client_id=Mobileserver['clientid'],
-                                   verify=True,
-                                   auto_refresh_token = [ 'get', 'post', 'put', 'delete' ] )
+        Mobile_admin = MobileAdmin(
+                               auth_server_url=server['URL'] + "/auth/",
+                               server_url=Mobile_url,
+                               username=Mobileserver['user'],
+                               password=server['password'],
+                               realm_name=Mobileserver['realm'],
+                               client_id=Mobileserver['clientid'],
+                               verify=True,
+                               auto_refresh_token = [ 'get', 'post', 'put', 'delete' ] )
 
     except MobileConnectionError as error:
         print("Could not connect: " + error.error_message)
@@ -94,13 +78,12 @@ def find_server_in_list(server_data, server_url):
         if 'URL' in server:
             url_bits = urlparse(server['URL'])
             if locate_server[1] == url_bits[1]:
-                if 'clientsecret' not in server:
-                    if 'user' not in server:
-                        print("username not found for: " + server_url)
-                        return None
-                    if 'password' not in server:
-                        print("password not found for: " + server_url)
-                        return None
+                if 'user' not in server:
+                    print("username not found for: " + server_url)
+                    return None
+                if 'password' not in server:
+                    print("password not found for: " + server_url)
+                    return None
                 if 'realm' not in server:
                     print("realm not found for: " + server_url)
                     return None
@@ -126,7 +109,7 @@ def main():
     configfile = "mobileservers.yaml"
 
     #set up arguments
-    parser = argparse.ArgumentParser(description='Import US Bank Users')
+    parser = argparse.ArgumentParser(description='Mobile Client Test')
     parser.add_argument('-s', '--serverurl', type=str,
                         help='server to connect to if not default')
     parser.add_argument('-m', '--mobileurl', type=str,
@@ -139,7 +122,8 @@ def main():
         with open(configfile) as f:
             data = yaml.load(f, Loader=yaml.FullLoader)
     except:
-        print("ERROR: YAML format of " + configfile + " is invalid (e.g. no tabs) - " + sys.exc_info()[0])
+        print("ERROR: YAML format of " + configfile + " is invalid (e.g. no tabs) - " + \
+              str(sys.exc_info()[0]))
         sys.exit(1)
 
     if args.mobileurl is not None:

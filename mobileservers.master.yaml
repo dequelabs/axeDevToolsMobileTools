@@ -3,7 +3,9 @@
         {
             "Name": "centralsso",
             "URL": "https://auth.deque.com/",
-            "realm": "axe"
+            "realm": "axe",
+            "user": <your user name>,
+            "password": <your password>
         },
         {
             "Name": "sauronprod",
